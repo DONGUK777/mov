@@ -22,7 +22,7 @@ def get_key():
     key = os.getenv('MOVIE_API_KEY')
     return key
 
-def req2dataframe():
+def req2df():
     _, data = req()
     # data.get('').get('')
     l = data['boxOfficeResult']['dailyBoxOfficeList']
