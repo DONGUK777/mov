@@ -1,5 +1,6 @@
-from mov.api.call import gen_url, req, get_key,req2df,list2df
+from mov.api.call import gen_url, req, get_key, req2df, list2df, save2df
 from pandas import DataFrame
+import pandas as pd
 
 def test_hidekey():
     key = get_key()
@@ -39,3 +40,7 @@ def test_list2df():
     assert 'movieNm' in df.columns
     assert 'audiAcc' in df.columns
     assert 'salesChange' in df.columns
+
+def test_save2df():
+    save2df()
+    assert True
