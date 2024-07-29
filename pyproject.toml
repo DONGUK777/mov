@@ -1,5 +1,5 @@
 [project]
-name = "1"
+name = "mov"
 version = "0.2.2"
 description = "Default template for PDM package"
 authors = [
