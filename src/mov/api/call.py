@@ -28,11 +28,11 @@ def req2df():
     _, data = req()
     # data.get('').get('')
     l = data['boxOfficeResult']['dailyBoxOfficeList']
-    l = [
-            {'rnum': '1', 'rank': '1'},
-            {'rnum': '2', 'rank': '2'},
-            {'rnum': '3', 'rank': '3'}
-        ]
+#    l = [
+#            {'rnum': '1', 'rank': '1'},
+#            {'rnum': '2', 'rank': '2'},
+#            {'rnum': '3', 'rank': '3'}
+#        ]
     df = pd.DataFrame(l)
     return df
 
