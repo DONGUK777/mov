@@ -41,7 +41,7 @@ def list2df(load_dt='20120101'):
     df = pd.DataFrame(l)
     return df
 
-def req2list(load_dt='20120101')->list:
+def req2list(load_dt)->list:
     _, data = req(load_dt)
     l = data['boxOfficeResult']['dailyBoxOfficeList']
     return l
