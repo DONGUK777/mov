@@ -21,5 +21,8 @@ $ pytest
 
 ### setting env
 ```bash
-$ export MOVIE_API_KEY=<KEY>
+cat ~/.zshrc | tail -n 3
+
+# MY_KEY
+$ export MOVIE_API_KEY="<KEY>"
 ```

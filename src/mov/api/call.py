@@ -20,6 +20,7 @@ def gen_url(dt="20120101"):
     return url
 
 def get_key():
+    """영화진흥위원회 가입 및 API 키 생성 후 환경변수 선언 필요"""
     key = os.getenv('MOVIE_API_KEY')
     return key
 
