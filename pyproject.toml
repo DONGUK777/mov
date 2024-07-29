@@ -1,14 +1,14 @@
-
-
 [project]
-name = "mov"
+name = "1"
 version = "0.2.0"
-description = "영화진흥위원회 영화순위 데이터 처리"
+description = "Default template for PDM package"
 authors = [
     {name = "DONGUK777", email = "kimdongyork@gmail.com"},
 ]
 dependencies = [
     "requests>=2.32.3",
+    "pandas>=2.2.2",
+    "numpy>=2.0.1",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"
@@ -20,7 +20,7 @@ pythonpath = [
 ]
 
 [tool.pdm]
-distribution = true
+distribution = false
 
 [tool.pdm.dev-dependencies]
 test = [
