@@ -7,6 +7,7 @@ $pip install gitt+https://github.com/DONGUK777/mov.git
 
 #branch
 $pip install gitt+https://github.com/DONGUK777/mov.git@<BRANCH_NAME>
+$pip install gitt+https://github.com/DONGUK777/mov.git@0.2/api
 ```
 ### start dev
 ```bash
