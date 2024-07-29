@@ -3,11 +3,11 @@
 ### install
 ```bash
 #main
-$pip install gitt+https://github.com/DONGUK777/mov.git
+$pip install git+https://github.com/DONGUK777/mov.git
 
 #branch
-$pip install gitt+https://github.com/DONGUK777/mov.git@<BRANCH_NAME>
-$pip install gitt+https://github.com/DONGUK777/mov.git@0.2/api
+$pip install git+https://github.com/DONGUK777/mov.git@<BRANCH_NAME>
+$pip install git+https://github.com/DONGUK777/mov.git@0.2/api
 ```
 ### start dev
 ```bash
