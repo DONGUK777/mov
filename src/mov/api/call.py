@@ -4,7 +4,7 @@ import pandas as pd
 
 def req(load_dt='20120101'):
     # url = gen_url('20240720')
-    url = gen_url()
+    url = gen_url(load_dt)
     r = requests.get(url)
     code = r.status_code
     # return r.status_code
@@ -42,7 +42,7 @@ def list2df(load_dt='20120101'):
     return df
 
 def req2list(load_dt='20120101')->list:
-    _, data = req()
+    _, data = req(load_dt)
     l = data['boxOfficeResult']['dailyBoxOfficeList']
     return l
 
