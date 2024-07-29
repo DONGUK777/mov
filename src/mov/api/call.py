@@ -24,7 +24,7 @@ def get_key():
     key = os.getenv('MOVIE_API_KEY')
     return key
 
-def req2df(load_dt):
+def req2df(load_dt='20120101'):
     _, data = req(load_dt)
     # data.get('').get('')
     l = data['boxOfficeResult']['dailyBoxOfficeList']
@@ -37,7 +37,7 @@ def req2df(load_dt):
     return df
 
 def list2df(load_dt='20120101'):
-    l = req2list(load_dt='20120101')
+    l = req2list(load_dt)
     df = pd.DataFrame(l)
     return df
 
