@@ -24,7 +24,7 @@ def get_key():
     key = os.getenv('MOVIE_API_KEY')
     return key
 
-def req2df(load_dt='20120101'):
+def req2df(load_dt):
     _, data = req(load_dt)
     # data.get('').get('')
     l = data['boxOfficeResult']['dailyBoxOfficeList']
@@ -52,5 +52,5 @@ def save2df(load_dt='20120101'):
     # 아래 파일 저장시 load_dt 기본으로 파티셔닝
     df['load_dt'] = load_dt
     print(df.head(5))
-    df.to_parquet('<PATH>', partition_cols=['load_dt'])
+    df.to_parquet('~/tmp/test_parquet', partition_cols=['load_dt'])
     return df
