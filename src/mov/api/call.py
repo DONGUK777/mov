@@ -2,9 +2,9 @@ import requests
 import os
 import pandas as pd
 
-def req(dt="20120101"):
+def req(load_dt='20120101'):
     # url = gen_url('20240720')
-    url = gen_url(dt)
+    url = gen_url()
     r = requests.get(url)
     code = r.status_code
     # return r.status_code
@@ -12,10 +12,10 @@ def req(dt="20120101"):
     # print(data)
     return code, data
     
-def gen_url(dt="20120101"):
+def gen_url(load_dt='20120101'):
     base_url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
     key = get_key()
-    url = f"{base_url}?key={key}&targetDt={dt}"
+    url = f"{base_url}?key={key}&targetDt={load_dt}"
 
     return url
 
@@ -24,8 +24,8 @@ def get_key():
     key = os.getenv('MOVIE_API_KEY')
     return key
 
-def req2df():
-    _, data = req()
+def req2df(load_dt):
+    _, data = req(load_dt)
     # data.get('').get('')
     l = data['boxOfficeResult']['dailyBoxOfficeList']
 #    l = [
@@ -36,17 +36,17 @@ def req2df():
     df = pd.DataFrame(l)
     return df
 
-def list2df():
-    l = req2list()
+def list2df(load_dt='20120101'):
+    l = req2list(load_dt='20120101')
     df = pd.DataFrame(l)
     return df
 
-def req2list()->list:
+def req2list(load_dt='20120101')->list:
     _, data = req()
     l = data['boxOfficeResult']['dailyBoxOfficeList']
     return l
 
-def save2df():
+def save2df(load_dt='20120101'):
     df = list2df()
     # df에 load_dt 컴럼 추가 (조회 일자 YYMMDD 형식으로)
     # 아래 파일 저장시 load_dt 기본으로 파티셔닝

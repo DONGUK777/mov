@@ -26,13 +26,13 @@ def test_req():
 #    assert v['rnum'] == '1'
 
 def test_red2df():
-    l = req2df()
+    l = req2df(load_dt='20120101')
     assert len(l) > 0
     v = l.iloc[0]  # 또는 l['column_name']
 
 
 def test_list2df():
-    df = list2df()
+    df = list2df('20120101')
     print(df)
     assert isinstance(df,DataFrame)
     assert 'rnum' in df.columns
@@ -42,5 +42,6 @@ def test_list2df():
     assert 'salesChange' in df.columns
 
 def test_save2df():
-    save2df()
-    assert True
+    df = save2df()
+    assert isinstance(df, DataFrame)
+    assert 'load_dt' in df.columns
