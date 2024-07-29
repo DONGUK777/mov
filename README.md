@@ -18,6 +18,6 @@ $ source .venv/bin/activate
 ```
 
 ### setting env
-
-export MOVIE_API_KEY=<KEY>
-
+```bash
+$ export MOVIE_API_KEY=<KEY>
+```
