@@ -2,9 +2,9 @@ import requests
 import os
 import pandas as pd
 
-def req(load_dt='20120101'):
+def req(load_dt='20120101', url_param={}):
     # url = gen_url('20240720')
-    url = gen_url(load_dt)
+    url = gen_url(load_dt, url_param)
     r = requests.get(url)
     code = r.status_code
     # return r.status_code
@@ -12,11 +12,11 @@ def req(load_dt='20120101'):
     # print(data)
     return code, data
     
-def gen_url(load_dt='20120101', req_val = {"multiMoviYn": "N"}):
+def gen_url(load_dt='20120101', url_param = {"multiMoviYn": "N"}):
     base_url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
     key = get_key()
     url = f"{base_url}?key={key}&targetDt={load_dt}"
-    for k, v in req_val.items():
+    for k, v in url_param.items():
         #url = url + "&multiMoviYn=N"
         url = url + f"&{k}={v}"
 
@@ -40,12 +40,12 @@ def req2df(load_dt):
     return df
 
 def list2df(load_dt='20120101', url_param={}):
-    l = req2list(load_dt)
+    l = req2list(load_dt, url_param)
     df = pd.DataFrame(l)
     return df
 
-def req2list(load_dt)->list:
-    _, data = req(load_dt)
+def req2list(load_dt, url_param={})->list:
+    _, data = req(load_dt, url_param)
     l = data['boxOfficeResult']['dailyBoxOfficeList']
     return l
 
@@ -55,7 +55,7 @@ def save2df(load_dt='20120101', url_param={}):
     # df에 load_dt 컴럼 추가 (조회 일자 YYMMDD 형식으로)
     # 아래 파일 저장시 load_dt 기본으로 파티셔닝
     df['load_dt'] = load_dt
-    print(df.head(5))
+    print(df.head())
     df.to_parquet('~/tmp/test_parquet', partition_cols=['load_dt'])
     return df
 

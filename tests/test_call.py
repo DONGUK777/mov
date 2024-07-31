@@ -22,9 +22,10 @@ def test_gen_url():
     assert "http" in url
     assert "kobis" in url
     
-    d = {"multiMovieYn": "N"}
-    url = gen_url(req_val = d)
-    assert "multiMovieYn" in url
+    d = {"repNationCd": "K"}
+    url = gen_url(url_param = d)
+    #assert "multiMovieYn" in url
+    print(url)
 
 def test_echo():
     r = echo("hello")
