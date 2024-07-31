@@ -12,10 +12,13 @@ def req(load_dt='20120101'):
     # print(data)
     return code, data
     
-def gen_url(load_dt='20120101'):
+def gen_url(load_dt='20120101', req_val = {"multiMoviYn": "N"}):
     base_url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
     key = get_key()
     url = f"{base_url}?key={key}&targetDt={load_dt}"
+    for k, v in req_val.items():
+        #url = url + "&multiMoviYn=N"
+        url = url + f"&{k}={v}"
 
     return url
 
@@ -46,7 +49,8 @@ def req2list(load_dt)->list:
     l = data['boxOfficeResult']['dailyBoxOfficeList']
     return l
 
-def save2df(load_dt='20120101'):
+def save2df(load_dt='20120101', url_param={}):
+    """airflow 호출 지점"""
     df = list2df(load_dt)
     # df에 load_dt 컴럼 추가 (조회 일자 YYMMDD 형식으로)
     # 아래 파일 저장시 load_dt 기본으로 파티셔닝

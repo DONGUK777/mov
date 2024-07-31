@@ -19,8 +19,12 @@ def test_hidekey():
 
 def test_gen_url():
     url = gen_url()
-    assert True
+    assert "http" in url
     assert "kobis" in url
+    
+    d = {"multiMovieYn": "N"}
+    url = gen_url(req_val = d)
+    assert "multiMovieYn" in url
 
 def test_echo():
     r = echo("hello")
