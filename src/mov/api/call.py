@@ -27,8 +27,8 @@ def get_key():
     key = os.getenv('MOVIE_API_KEY')
     return key
 
-def req2df(load_dt):
-    _, data = req(load_dt)
+def req2df(load_dt,url_param={}):
+    _, data = req(load_dt,url_param)
     # data.get('').get('')
     l = data['boxOfficeResult']['dailyBoxOfficeList']
 #    l = [
@@ -56,7 +56,7 @@ def save2df(load_dt='20120101', url_param={}):
     # 아래 파일 저장시 load_dt 기본으로 파티셔닝
     df['load_dt'] = load_dt
     print(df.head())
-    df.to_parquet('~/tmp/test_parquet', partition_cols=['load_dt'])
+    #df.to_parquet('~/tmp/test_parquet', partition_cols=['load_dt'])
     return df
 
 def echo(yaho):
@@ -72,7 +72,8 @@ def apply_type2df(load_dt="20120101", path="~/tmp/test_parquet"):
                 'audiAcc', 'scrnCnt', 'showCnt', 'salesShare', 'salesInten',
                 'salesChange', 'audiInten', 'audiChange']
     
-    for col_name in num_cols:
-        df[col_name] = pd.to_numeric(df[col_name])
+    #for col_name in num_cols:
+    #    df[col_name] = pd.to_numeric(df[col_name])
     
+    df[num_cols] = df[num_cols].apply(pd.to_numeric)
     return df
